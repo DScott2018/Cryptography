@@ -1,0 +1,12 @@
+from cryptography.fernet import Fernet
+
+def decrypt_data(key, encrypted_data):
+    fernet = Fernet(key)
+    decrypted_data = fernet.decrypt(encrypted_data).decode()
+    return decrypted_data
+
+if __name__ == "__main__":
+    encryption_key = input("Enter the encryption key: ")
+    encrypted_data = input("Enter the data to decrypt: ")
+    decrypted_data = decrypt_data(encryption_key, encrypted_data.encode())
+    print(f"Decrypted Data: {decrypted_data}")

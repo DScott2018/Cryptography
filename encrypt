@@ -1,0 +1,13 @@
+from cryptography.fernet import Fernet
+
+def encrypt_data(key, data):
+    fernet = Fernet(key)
+    encrypted_data = fernet.encrypt(data.encode())
+    return encrypted_data
+
+if __name__ == "__main__":
+    encryption_key = Fernet.generate_key()
+    input_data = input("Enter the data to encrypt: ")
+    encrypted_data = encrypt_data(encryption_key, input_data)
+    print(f"Encrypted Data: {encrypted_data}")
+    print("Key: ", encryption_key)
